@@ -4,7 +4,7 @@ import './App.css'
 import WeatherInfo from './componentes/Weatherinformation/WeatherInfo'
 
 function App() {
-  const [weather, setWeather] = useState({})
+  const [weather, setWeather] = useState()
   const inputRef = useRef()
 
 async function searchCity() {
@@ -20,12 +20,12 @@ async function searchCity() {
 
   return (
 
-        <div>
+        <div className='container'>
           <h1>DevClub previsão do tempo</h1>
           <input ref={inputRef} type="text" placeholder='Digite o nome da cidade'/>
           <button onClick={searchCity}>Buscar</button>
 
-          <WeatherInfo/>
+          {weather && <WeatherInfo weather={weather}/>}
         </div>
   )
 }
